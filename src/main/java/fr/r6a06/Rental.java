@@ -1,5 +1,7 @@
 package fr.r6a06;
 
+import fr.r6a06.movie.Movie;
+
 public class Rental {
     private Movie _movie;
     private int _daysRented;
@@ -23,11 +25,8 @@ public class Rental {
         return movie.getCharge(_daysRented);
     }
         public  int getFrequentRenterPoints() {
-            int frequentRenterPoints = 0 ;
-            frequentRenterPoints++;
-            // add bonus for a two day new release rental
-            if ((this.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
-                    this.getDaysRented() > 1) frequentRenterPoints++;
-            return frequentRenterPoints;
+            Movie movie = getMovie();
+            return movie.getFrequentRenterPoints(_daysRented);
+
     }
 }

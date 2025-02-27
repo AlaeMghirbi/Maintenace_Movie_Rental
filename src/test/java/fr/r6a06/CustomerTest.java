@@ -1,5 +1,7 @@
 package fr.r6a06;
 
+import fr.r6a06.movie.Movie;
+import fr.r6a06.movie.builder.MovieBuilder;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -22,7 +24,11 @@ public class CustomerTest {
     }
     @Test
     public void should_check_Regular_statement(){
-        Movie movie1=new Movie("Titanic",0);
+        Movie movie1= new MovieBuilder()
+                .withTitle("Titanic")
+                .withPriceCode(0)
+                .build();
+
         Rental rental1=new Rental(movie1,1);
         Customer cos=new CostumerBuilder()
                 .withName("Alae")
@@ -36,7 +42,11 @@ public class CustomerTest {
     }
     @Test
     public void statementForNewReleaseMovie() {
-        Movie movie1 = new Movie("Star Wars", Movie.NEW_RELEASE);
+        Movie movie1= new MovieBuilder()
+                .withTitle("Star Wars")
+                .withPriceCode(Movie.NEW_RELEASE)
+                .build();
+
         Rental rental1 = new Rental(movie1, 3); // 3 day rental
         Customer customer2 =
                 new CostumerBuilder()
@@ -53,7 +63,11 @@ public class CustomerTest {
 
     @Test
     public void statementForChildrensMovie() {
-        Movie movie1 = new Movie("Madagascar", Movie.CHILDRENS);
+        Movie movie1= new MovieBuilder()
+                .withTitle("Madagascar")
+                .withPriceCode(Movie.CHILDRENS)
+                .build();
+
         Rental rental1 = new Rental(movie1, 3); // 3 day rental
         Customer customer2
                 = new CostumerBuilder()
@@ -69,9 +83,20 @@ public class CustomerTest {
     }
     @Test
     public void statementForManyMovies() {
-        Movie movie1 = new Movie("Madagascar", Movie.CHILDRENS);
-        Movie movie2 = new Movie("Sallie", Movie.NEW_RELEASE);
-        Movie movie3 = new Movie("Titanic", Movie.REGULAR);
+        Movie movie1= new MovieBuilder()
+                .withTitle("Madagascar")
+                .withPriceCode(Movie.CHILDRENS)
+                .build();
+        Movie movie2= new MovieBuilder()
+                .withTitle("Sallie")
+                .withPriceCode(Movie.NEW_RELEASE)
+                .build();
+        Movie movie3= new MovieBuilder()
+                .withTitle("Titanic")
+                .withPriceCode(Movie.REGULAR)
+                .build();
+
+
         Rental rental1 = new Rental(movie1, 6);
         Rental rental2 = new Rental(movie2, 2);
         Rental rental3 = new Rental(movie3, 8);
